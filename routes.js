@@ -13,19 +13,6 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 // router.set('view engine', 'ejs');
 
-var workouts = [
-	{
-		id: "1",
-		type: "weight",
-		day: "02/05/2019"
-	},
-	{
-		id: "2",
-		type: "height",
-		day: "02/05/2019"
-	}
-]
-
 router.use( (req, res, next) => {
 	console.log(req.method, req.url);
 	next();
@@ -41,15 +28,6 @@ router.get( '/workouts', (req, res) =>{
 
 router.post( '/workout', function(req, res) {
 	console.log(req.body);
-	// if( !req.body.id ) {
-	// 	return res.status(400).send({
-	// 		message: "id is required"
-	// 	})
-	// }
-
-	// var test = uuidv1();
-
-	// res.send(test);
 
 	client.index({
 		index: 'mydocument',
@@ -69,7 +47,6 @@ router.post( '/workout', function(req, res) {
 
 } )
 
-//search_all.js
 
 const search = function search(index, body) {
   return client.search({index: index, body: body});
@@ -247,4 +224,4 @@ router.get('/search',function(req, res){
 
 
 
-module.exports = router; 
+// module.exports = router; 
